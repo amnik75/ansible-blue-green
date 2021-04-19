@@ -1,5 +1,7 @@
 - hosts: apps
   become: yes
+  vars_files:
+    - vars/first-var.yaml
   tasks:
   - name: Installs nginx web server
     apt:
