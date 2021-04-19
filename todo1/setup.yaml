@@ -1,0 +1,6 @@
+---
+
+- include: nginx.yaml
+- include: firewall.yaml
+- include: docker.yaml
+- include: first-deploy.yaml 

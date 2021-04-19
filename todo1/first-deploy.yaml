@@ -1,0 +1,13 @@
+- hosts: apps
+  become: yes
+  vars_files:
+    - vars/first-var.yaml
+  tasks:
+  - name: pull an image
+    docker_image:
+      name: amnik/snapp:{{ version }}
+  - name: Create a app{{ version }} container
+    docker_container:
+      name: app{{ version }}
+      image: amnik/snapp:{{ version }}
+      published_ports: "{{ port }}:3000"
