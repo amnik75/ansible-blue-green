@@ -1,0 +1,38 @@
+- hosts: apps
+  become: yes
+  vars_files:
+    - vars/deploy-var.yaml
+  tasks:
+  - name: pull an image {{ version }}
+    docker_image:
+      name: amnik/snapp:{{ version }}
+  - name: Create an app{{ version }} container
+    docker_container:
+      name: app{{ version }}
+      image: amnik/snapp:{{ version }}
+      published_ports: "{{ port }}:3000"
+
+  - name: Check /healthz
+    uri:
+      url: http://127.0.0.1:{{ port }}/healthz
+      follow_redirects: none
+      method: GET
+    register: result
+    until: result.status == 200
+    ignore_errors: yes
+    retries: 12 
+    delay: 5
+  
+  - name: reroute the local reverse proxy
+    template:
+      src: local-reverse-proxy.conf.j2
+      dest: /etc/nginx/sites-enabled/localproxy.conf
+    notify: reload nginx
+    when: result.status == 200
+
+  handlers:
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded
+
