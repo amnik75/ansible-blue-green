@@ -1,0 +1,10 @@
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: Build an image and push it to dockerhub
+    docker_image:
+     path: ./apps/{{ item }}
+     name: amnik/snapp
+     tag: "{{ item }}"
+     push: yes
+    loop: ['v4.0.0']
