@@ -1,4 +1,10 @@
-version: v4.0.0
+version: v3.0.0
 pre_version: v2.0.0
-port: 3004
+port: 3003
 pre_port: 3002
+email_host: smtp.gmail.com
+email_port: 587
+email_username: snapp.amir.deploy@gmail.com
+email_password: tcqotsaugmswyvus
+email_receiver: a.npour75@gmail.com
+

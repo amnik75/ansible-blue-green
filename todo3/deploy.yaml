@@ -29,6 +29,31 @@
       dest: /etc/nginx/sites-enabled/localproxy.conf
     notify: reload nginx
     when: result.status == 200
+  - mail:
+      host: "{{ email_host }}"
+      port: "{{ email_port }}"
+      username: "{{ email_username }}"
+      password: "{{ email_password}}"
+      to: "{{ email_receiver }}"
+      subject: Snapp deploy team
+      body: 'app{{ version }} is deployed successfully!'
+    when: result.status == 200
+
+
+  - mail:
+      host: "{{ email_host }}"
+      port: "{{ email_port }}"
+      username: "{{ email_username }}"
+      password: "{{ email_password}}"
+      to: "{{ email_receiver }}"
+      subject: Snapp deploy team
+      body: 'app{{ version }} deployment failed!'
+    when: result.status == 500
+  - name: remove broken container
+    docker_container:
+      name: app{{ version }}
+      state: absent
+    when: result.status == 500
 
   handlers:
     - name: reload nginx
