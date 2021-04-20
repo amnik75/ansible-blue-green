@@ -1,0 +1,26 @@
+- hosts: apps
+  become: yes
+  vars_files:
+    - vars/deploy-var.yaml
+  tasks:
+  - name: pull an image {{ pre_version }}
+    docker_image:
+      name: amnik/snapp:{{ pre_version }}
+  - name: Create an app{{ pre_version }} container
+    docker_container:
+      name: app{{ pre_version }}
+      image: amnik/snapp:{{ pre_version }}
+      published_ports: "{{ pre_port }}:3000"
+
+  - name: reroute the local reverse proxy
+    template:
+      src: pre-local-reverse-proxy.conf.j2
+      dest: /etc/nginx/sites-enabled/localproxy.conf
+    notify: reload nginx
+
+  handlers:
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded
+
