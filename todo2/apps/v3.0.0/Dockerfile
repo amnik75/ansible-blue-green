@@ -1,7 +1,5 @@
 # TODO v3.0.0
 FROM golang:alpine
-ENV HTTP_PROXY="http://172.17.0.1:8118"
-ENV HTTPS_PROXY="http://172.17.0.1:8118"
 RUN apk add --no-cache git
 WORKDIR /app/myapp
 COPY go.mod .
