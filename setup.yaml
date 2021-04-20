@@ -1,5 +1,0 @@
----
-
-- include: nginx.yaml
-- include: firewall.yaml
-- include: docker.yaml 
