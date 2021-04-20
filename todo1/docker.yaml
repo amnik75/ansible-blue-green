@@ -2,7 +2,6 @@
 - hosts: apps
   become: true
   tasks:
-
     - name: Install required packages
       apt: name={{ item }} state=latest update_cache=yes
       loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gnupg', 'lsb-release', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
