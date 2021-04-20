@@ -4,7 +4,7 @@ port: 3003
 pre_port: 3002
 email_host: smtp.gmail.com
 email_port: 587
-email_username: snapp.amir.deploy@gmail.com
-email_password: tcqotsaugmswyvus
-email_receiver: a.npour75@gmail.com
+email_username: ****************
+email_password: ****************
+email_receiver: ****************
 
