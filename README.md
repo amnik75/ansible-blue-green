@@ -11,13 +11,13 @@ version -> choose the app version that you want deploy first. It's default is v1
 port -> choose the port that publish for access. Nginx reverse proxy to this port.  
 
 #### todo3/vars/deploy-var.yaml:
-version -> verion that you want to deploy.
-port -> port that publish for access.
-pre_version -> version that you want to rollback to.
-pre_port -> port that nginx should reverse proxy to.
-email_host -> smtp server for sending state of the deployment like smtp.gmail.com.
-email_port -> smtp server port.
-email_username -> email address to use for sending.
-email_password -> password of the email.
-email_receiver -> email adress of the person that receive the alert.
-email_enabled -> set this true/false for enable/disable the email feature. If you set it true you should defined the email vars above.  
+version -> verion that you want to deploy.  
+port -> port that publish for access.  
+pre_version -> version that you want to rollback to.  
+pre_port -> port that nginx should reverse proxy to.  
+email_host -> smtp server for sending state of the deployment like smtp.gmail.com.  
+email_port -> smtp server port.  
+email_username -> email address to use for sending.  
+email_password -> password of the email.  
+email_receiver -> email adress of the person that receive the alert.  
+email_enabled -> set this true/false for enable/disable the email feature. If you set it true you should defined the email vars above.    
