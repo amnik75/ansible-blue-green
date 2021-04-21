@@ -7,8 +7,8 @@ After cloning the repository and installing ansible on your machine you should m
 ### Vars files
 
 #### todo1/vars/first-var.yaml:
-version -> choose the app version that you want deploy first. It's default is v1.0.0.
-port -> choose the port that publish for access. Nginx reverse proxy to this port.
+version -> choose the app version that you want deploy first. It's default is v1.0.0.  
+port -> choose the port that publish for access. Nginx reverse proxy to this port.  
 
 #### todo3/vars/deploy-var.yaml:
 version -> verion that you want to deploy.
