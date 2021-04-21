@@ -20,3 +20,4 @@ email_port -> smtp server port.
 email_username -> email address to use for sending.
 email_password -> password of the email.
 email_receiver -> email adress of the person that receive the alert.
+email_enabled -> set this true/false for enable/disable the email feature. If you set it true you should defined the email vars above.  

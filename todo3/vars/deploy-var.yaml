@@ -2,9 +2,10 @@ version: v3.0.0
 pre_version: v2.0.0
 port: 3003
 pre_port: 3002
-email_host: smtp.gmail.com
-email_port: 587
-email_username: ****************
-email_password: ****************
-email_receiver: ****************
+#email_host: smtp.gmail.com
+#email_port: 587
+#email_username: ****************
+#email_password: ****************
+#email_receiver: ****************
+email_enabled: false
 

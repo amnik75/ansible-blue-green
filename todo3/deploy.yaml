@@ -34,11 +34,11 @@
       port: "{{ email_port }}"
       username: "{{ email_username }}"
       password: "{{ email_password}}"
+      ignore_errors: yes
       to: "{{ email_receiver }}"
       subject: Snapp deploy team
       body: 'app{{ version }} is deployed successfully!'
-    when: result.status == 200
-
+    when: result.status == 200 and email_enabled | bool   
 
   - mail:
       host: "{{ email_host }}"
@@ -46,6 +46,7 @@
       username: "{{ email_username }}"
       password: "{{ email_password}}"
       to: "{{ email_receiver }}"
+      ignore_errors: yes
       subject: Snapp deploy team
       body: 'app{{ version }} deployment failed!'
     when: result.status == 500
@@ -53,7 +54,7 @@
     docker_container:
       name: app{{ version }}
       state: absent
-    when: result.status == 500
+    when: result.status == 500 and email_enabled | bool
 
   handlers:
     - name: reload nginx
